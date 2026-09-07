@@ -1,0 +1,773 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FrameShot &mdash; Player Guidebook | Honeytreat Trade Academy</title>
+<style>
+*{box-sizing:border-box}
+:root{--ink:#241a10;--pap:#f6f3ec;--card:#fff;--line:#e2d8c6;--amber:#e6b95c;--deep:#241810;--mut:#5a4126}
+body{margin:0;background:var(--pap);color:var(--ink);font:16px/1.62 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#8a5a12}
+header.top{background:linear-gradient(160deg,#241810,#3a2817);color:#f4ecd6;padding:40px 0 34px;border-bottom:5px solid var(--amber)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:12px;font-weight:800;color:var(--amber);margin:0 0 8px}
+h1{font-size:39px;line-height:1.1;margin:0 0 10px;font-weight:850}
+.sub{font-size:19px;color:#d6c4a2;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{background:rgba(230,185,92,.15);border:1px solid rgba(230,185,92,.5);color:#f2cd76;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.layout{display:grid;grid-template-columns:236px 1fr;gap:36px;max-width:1080px;margin:0 auto;padding:26px 22px 90px}
+nav.toc{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;font-size:14.5px}
+nav.toc a{display:block;padding:6px 10px;border-radius:7px;color:var(--mut);text-decoration:none;border-left:3px solid transparent}
+nav.toc a:hover{background:#efe7d8}
+nav.toc a.on{background:#fff;border-left-color:var(--amber);color:var(--ink);font-weight:700}
+nav.toc .lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7a5e;font-weight:800;margin:14px 0 4px;padding-left:10px}
+h2{font-size:26px;margin:40px 0 6px;padding-top:14px;border-top:2px solid #e0d6c2;font-weight:820;scroll-margin-top:14px}
+h2:first-of-type{border-top:0;margin-top:6px}
+h3{font-size:18.5px;margin:24px 0 8px;font-weight:800}
+h4{font-size:15.5px;margin:16px 0 6px;font-weight:800;color:var(--mut)}
+p{margin:.55em 0}.lead{font-size:17.5px;color:#4a3a26}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0;box-shadow:0 1px 3px rgba(60,40,10,.05)}
+.rowlist{list-style:none;padding:0;margin:12px 0}
+.rowlist li{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #ece4d6}
+.rowlist li:last-child{border-bottom:0}
+.i{flex:0 0 auto;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;background:#f2e6cd;border-radius:8px;color:#7a5a1e}
+.i svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.i svg .f{fill:currentColor;stroke:none}
+.rowlist>li>div>b{display:block;font-size:15.5px}
+.rowlist .d{color:#54452f;font-size:15px}
+.rowlist .d b,.rowlist .d kbd{display:inline}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #e6dccb;vertical-align:top}
+th{background:#f0e8d8;font-weight:800;font-size:13.5px}
+kbd{background:var(--deep);color:#f2cd76;border-radius:5px;padding:2px 8px;font:600 13px/1.5 ui-monospace,monospace;display:inline-block}
+.note{background:#fdf6e6;border:1px solid #e8d6a8;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;display:flex;gap:12px;align-items:flex-start}
+.ucode{font:600 12.5px ui-monospace,monospace;color:#8a7a5e}
+footer{margin-top:50px;padding-top:18px;border-top:2px solid #e0d6c2;color:#6a5a42;font-size:14px}
+/* ---- interactive bits ---- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.tab{background:#efe7d8;border:1px solid var(--line);color:var(--mut);border-radius:9px;padding:8px 16px;font:800 14.5px system-ui;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--deep);border-color:var(--deep);color:#f2cd76}
+.pane[hidden]{display:none}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.srch{flex:1 1 220px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.srch input{border:0;outline:0;font:15px system-ui;flex:1;background:transparent;color:inherit}
+.btn{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font:700 14px system-ui;color:var(--mut);cursor:pointer}
+.btn:hover{border-color:#c9a25e}
+.bar{height:9px;background:#e8dfcd;border-radius:99px;overflow:hidden;margin:8px 0 2px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#e6b95c,#c98f2e);width:0;transition:width .25s}
+.prog{font-size:13.5px;color:var(--mut);font-weight:700}
+details.unit{border:1px solid var(--line);border-left:4px solid var(--amber);background:#fff;border-radius:0 12px 12px 0;margin:12px 0;overflow:hidden}
+details.unit>summary{cursor:pointer;list-style:none;padding:14px 18px;display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+details.unit>summary::-webkit-details-marker{display:none}
+details.unit>summary:hover{background:#fbf7ee}
+.unum{background:var(--deep);color:#f2cd76;font-weight:800;font-size:12.5px;border-radius:7px;padding:3px 10px}
+.utitle{font-weight:800;font-size:16.5px;flex:1 1 auto}
+.chev{width:15px;height:15px;flex:0 0 auto;transition:transform .18s;color:#a08a63}
+details.unit[open] .chev{transform:rotate(90deg)}
+.ubody{padding:0 18px 16px;border-top:1px solid #f0e8da}
+.objs{list-style:none;padding:0;margin:6px 0}
+.objs li{display:flex;gap:10px;padding:5px 0;font-size:15px;align-items:flex-start}
+.objs input{margin:3px 0 0;width:16px;height:16px;accent-color:#a8792a;flex:0 0 auto;cursor:pointer}
+.objs label{cursor:pointer}
+.objs input:checked+label{color:#7a6a52;text-decoration:line-through}
+.who{color:var(--mut);font-size:14.5px;font-style:italic}
+/* joystick + dpad demos */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+@media(max-width:860px){.demo{grid-template-columns:1fr}.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;margin-bottom:10px}}
+.pad{position:relative;height:210px;background:#241810;border-radius:14px;overflow:hidden;touch-action:none;cursor:grab;user-select:none}
+.pad:active{cursor:grabbing}
+.pad .hint{position:absolute;inset:auto 0 10px;text-align:center;color:#b9a179;font-size:12.5px;pointer-events:none}
+.ring{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border:3px solid rgba(230,185,92,.55);border-radius:50%;background:rgba(230,185,92,.06);opacity:.55;transition:opacity .15s}
+.ring.on{opacity:1}
+.nub{position:absolute;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:#e6b95c;border:2px solid rgba(27,19,10,.55)}
+.read{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14.5px}
+.read dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:8px 0 0}
+.read dt{color:var(--mut);font-weight:700}
+.read dd{margin:0;font:600 14px ui-monospace,monospace}
+.stage{position:relative;height:96px;background:#efe7d8;border:1px solid var(--line);border-radius:10px;margin-top:10px;overflow:hidden}
+.guy{position:absolute;width:19px;height:19px;border-radius:50%;background:#8a5a12;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);left:50%;top:50%;margin:-9px 0 0 -9px}
+.dpadwrap{position:relative;height:210px;background:#241810;border-radius:14px;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none}
+.dbtn{position:absolute;width:62px;height:62px;border-radius:50%;background:rgba(42,28,16,.9);border:2.5px solid rgba(230,185,92,.85);color:#f2cd76;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.dbtn.hit{background:#e6b95c;color:#241810}
+.dbtn svg{width:20px;height:20px;fill:currentColor}
+.pressed{margin-top:10px;font:700 14px system-ui;color:var(--mut)}
+.pressed b{color:var(--ink)}
+#top{position:fixed;right:18px;bottom:18px;background:var(--deep);color:#f2cd76;border:0;border-radius:50%;width:44px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+#top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#top.show{display:flex}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px;margin:16px 0}
+.gcard{display:block;background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;text-decoration:none;color:inherit}
+.gcard:hover{border-color:#c9a25e;box-shadow:0 3px 10px rgba(60,40,10,.09)}
+.gcard b{display:block;font-size:17px}
+.gcard span{color:var(--mut);font-size:14.5px}
+.trk{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7a5e;font-weight:800;margin-top:8px;display:block}
+@media print{
+  body{background:#fff}nav.toc,#top,.toolbar,.tabs,.demo{display:none !important}
+  .layout{grid-template-columns:1fr;padding-top:0}
+  details.unit>.ubody{display:block !important}details.unit{break-inside:avoid}
+  header.top{background:#241810 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pane[hidden]{display:block !important}
+  a{color:inherit;text-decoration:none}
+}
+</style></head>
+<body data-game="frameshotOP">
+<header class="top"><div class="wrap">
+  <p class="eyebrow"><a href="../index.html" style="color:inherit;text-decoration:none">Honeytreat Trade Academy</a> &middot; Player Guidebook</p>
+  <h1>FrameShot</h1><p class="sub">Videography &amp; Film</p>
+  <div class="badges">
+    <span class="badge">Entertainment &amp; Creative track</span>
+    <span class="badge">3 levels</span>
+    <span class="badge">21 units</span>
+    <span class="badge">Learn by doing &mdash; no quizzes</span>
+  </div>
+</div></header>
+
+<div class="layout">
+<nav class="toc">
+  <div class="lbl">Guidebook</div>
+  <a href="#about">About this game</a>
+  <a href="#howtoplay">How to play</a>
+  <a href="#learn">What you will learn</a>
+  <a href="#assessment">How you are assessed</a>
+  <div class="lbl">Play</div>
+  <a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l1/index.html">Level 1</a><a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l2/index.html">Level 2</a><a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l3/index.html">Level 3</a>
+</nav>
+
+<main>
+<h2 id="about">About this game</h2>
+<div class="card">
+  <p class="lead">FrameShot teaches <b>Videography &amp; Film</b> by putting you on a working site as an apprentice.
+  You walk around, talk to the people who work there, and carry out the real tasks of the trade at real
+  workstations. There are no multiple-choice questions anywhere: you are assessed on the work you actually do.</p>
+  <div class="toolbar">
+    <button class="btn" id="printme"><span class="i"><svg viewBox="0 0 24 24"><path d="M7 9V3.5h10V9M7 18H4.5v-7h15v7H17"/><rect x="7" y="14.5" width="10" height="6"/></svg></span> Print / save as PDF</button>
+  </div>
+</div>
+
+
+<h2 id="howtoplay">How to play &mdash; the complete guide</h2>
+<p class="lead">FrameShot is a living world, not a quiz. Nobody asks you multiple-choice questions. You walk to a real
+workstation, open it, and <b>do the job</b> &mdash; and the objective ticks the moment the work is actually correct.
+This section covers every control and every part of the screen. <b>The two demos below are live: try them.</b></p>
+
+<h3>1. Try the joystick</h3>
+<p>This is the real control, running here in the page. <b>Press anywhere in the dark panel and drag.</b> Notice that
+wherever you press becomes the centre, that any direction works, and that how far you drag changes the speed.</p>
+<div class="demo">
+  <div class="pad" id="jspad">
+    <div class="ring" id="jsring"></div><div class="nub" id="jsnub"></div>
+    <div class="hint">press and drag anywhere in here</div>
+  </div>
+  <div class="read">
+    <b>What the game receives</b>
+    <dl>
+      <dt>Direction</dt><dd id="jsvec">x 0.00&nbsp;&nbsp; y 0.00</dd>
+      <dt>Angle</dt><dd id="jsang">--</dd>
+      <dt>Strength</dt><dd id="jsstr">0%</dd>
+      <dt>Result</dt><dd id="jsmode">stopped</dd>
+    </dl>
+    <div class="stage" id="jsstage"><div class="guy" id="jsguy"></div></div>
+    <p style="margin:8px 0 0;font-size:13.5px;color:#5a4126">The dot moves at the speed your drag is asking for.</p>
+  </div>
+</div>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="15.5" cy="8.5" r="3.6" class="f"/></svg></span><div><b>Press anywhere on the left half</b><span class="d">You never have to find a fixed stick
+    or look down &mdash; wherever your thumb lands becomes the centre.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" class="f"/></svg></span><div><b>Any direction, not just four</b><span class="d">Full 360-degree movement. Drag
+    diagonally and you walk diagonally.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><circle cx="9" cy="12" r="3.5" class="f"/></svg></span><div><b>Drag distance sets speed</b><span class="d">A small drag walks slowly &mdash; ideal for
+    lining up with a bench. Dragging to the edge runs. Dragging further does not go faster; it is capped.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg></span><div><b>Let go to stop</b><span class="d">The stick springs back to centre and the character
+    stops immediately.</span></div></li>
+</ul>
+
+<h3>2. Try the direction pad</h3>
+<p>If you prefer buttons, switch to the pad. Press the buttons below &mdash; then deliberately press the
+<b>diagonal gap</b> between two of them.</p>
+<div class="demo">
+  <div class="dpadwrap" id="dpwrap">
+    <div class="dbtn" data-dir="Up" style="transform:translateY(-62px)"><svg viewBox="0 0 24 24"><path d="M12 5l7 11H5z"/></svg></div>
+    <div class="dbtn" data-dir="Down" style="transform:translateY(62px)"><svg viewBox="0 0 24 24"><path d="M12 19L5 8h14z"/></svg></div>
+    <div class="dbtn" data-dir="Left" style="transform:translateX(-62px)"><svg viewBox="0 0 24 24"><path d="M5 12l11-7v14z"/></svg></div>
+    <div class="dbtn" data-dir="Right" style="transform:translateX(62px)"><svg viewBox="0 0 24 24"><path d="M19 12L8 19V5z"/></svg></div>
+  </div>
+  <div class="read">
+    <b>What registers</b>
+    <p class="pressed" id="dpout">Press a button, then try the diagonal gap between two of them.</p>
+    <p style="font-size:13.5px;color:#5a4126;margin-top:10px">Each button only responds inside its own circle. That is
+    why pressing near the edge of one can never trigger its neighbour &mdash; the gap simply does nothing, instead of
+    sending you the wrong way.</p>
+  </div>
+</div>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><rect x="9.5" y="2.5" width="5" height="19" rx="1.5" class="f"/><rect x="2.5" y="9.5" width="19" height="5" rx="1.5" class="f"/></svg></span><div><b>Press and hold to walk</b><span class="d">Hold a button to keep walking that way; release
+    to stop. Each button shows the direction it moves you.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 8h13l-3.5-3.5"/><path d="M20 16H7l3.5 3.5"/></svg></span><div><b>Switch between joystick and pad any time</b><span class="d">Tap the small switch button
+    beside the controls. It is labelled with what you will switch <b>to</b>, and your choice is remembered.</span></div></li>
+</ul>
+
+<h3>3. Before you start</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span><div><b>Hold the phone sideways (landscape)</b><span class="d">The world is a wide view. In
+    portrait you get a "rotate your device" screen; turn the phone and it starts immediately.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span><div><b>Go fullscreen</b><span class="d">Tap the expand button in the corner. On a phone this
+    hides the address bar and makes every control noticeably bigger.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 9.5h4l4.5-4v13L8 14.5H4z"/><path d="M16.5 9a4.5 4.5 0 0 1 0 6"/></svg></span><div><b>Sound is on by default</b><span class="d">There is an <b>SFX</b> toggle in the top bar. A
+    chime confirms each objective, but the game is fully playable silent.</span></div></li>
+</ul>
+
+<h3>4. What is on the screen</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 7h.01M4 12h.01M4 17h.01M8.5 7H20M8.5 12H20M8.5 17H20"/></svg></span><div><b>Objectives panel &mdash; top left</b><span class="d">Your current unit and its tasks. The
+    task you are on has an arrow; finished tasks show a tick. Tap the header to collapse it if it covers the view; it
+    remembers your choice.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" class="f"/></svg></span><div><b>Status bar &mdash; across the top</b><span class="d">Day and clock, the unit dots showing
+    how far you have come, and your running <b>Standard</b> percentage.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5v7M9.5 8.5h5M9.5 12h4M9.5 15.5h5"/></svg></span><div><b>Action button &mdash; bottom right</b><span class="d">The round <b>E</b> button: how you use
+    whatever you are standing next to.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v14l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v14M15 6.5v14"/></svg></span><div><b>Site Plan button &mdash; top right</b><span class="d">Opens the full map of the site.</span></div></li>
+</ul>
+
+<h3>5. On a computer</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg></span><div><b>Keyboard</b><span class="d"><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> or the arrow
+    keys to walk, <kbd>E</kbd> to use, <kbd>Space</kbd> to advance dialogue, <kbd>Esc</kbd> to close,
+    <kbd>M</kbd> for the map.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5v7M9.5 8.5h5M9.5 12h4M9.5 15.5h5"/></svg></span><div><b>Click to walk there</b><span class="d">Click a spot and the character walks to it. Click a
+    workstation and they walk over and open it.</span></div></li>
+</ul>
+
+<h3>6. Doing the work</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5v7M9.5 8.5h5M9.5 12h4M9.5 15.5h5"/></svg></span><div><b>Walk close, then press <kbd>E</kbd> or the round button</b><span class="d">When you are near
+    something usable, a label appears over it, e.g. "[E] Sorting bench". That label means the action button will
+    work.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M12 3.5L21.5 20h-19z"/><path d="M12 9.5v5M12 17.5h.01"/></svg></span><div><b>No label means you are not close enough</b><span class="d">Walk nearer until it shows.
+    Pressing with nothing nearby does nothing &mdash; you have not broken anything.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c0-4.2 3.4-6.5 7.5-6.5s7.5 2.3 7.5 6.5"/></svg></span><div><b>People work the same way</b><span class="d">Stand next to a colleague and press the same
+    button to talk. They give you the unit's instructions.</span></div></li>
+</ul>
+
+<h3>7. Being shown where to go</h3>
+<p>You should never wander wondering what to do. Three cues point at your next task and all update the instant you
+finish one.</p>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><path d="M12 6.5v4.5M12 14h.01"/></svg></span><div><b>The "!" marker</b><span class="d">Floats over the building holding your next task; once
+    inside it moves onto the exact bench or desk. It hides when you are close enough for that station's own label to
+    appear &mdash; at which point just press the action button.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z" class="f"/></svg></span><div><b>The heading arrow</b><span class="d">Always points toward your target, so you know which
+    way to set off.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v14l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v14M15 6.5v14"/></svg></span><div><b>The edge arrow</b><span class="d">If the target is off screen, the arrow pins to the screen
+    edge in that direction.</span></div></li>
+</ul>
+
+<h3>8. The Site Plan (the map)</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M3 6.5l6-2.5 6 2.5 6-2.5v14l-6 2.5-6-2.5-6 2.5z"/><path d="M9 4v14M15 6.5v14"/></svg></span><div><b>Open it any time</b><span class="d">Tap <b>Site Plan</b> top right, or press <kbd>M</kbd>.
+    It fills the screen.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" class="f"/></svg></span><div><b>What it shows</b><span class="d">Every building and the paths between them, to scale. A
+    coloured dot is <b>you</b>; a ring marks the building you need next.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg></span><div><b>Close it</b><span class="d">Tap the <b>X</b>, tap outside the panel, press <kbd>Esc</kbd>,
+    or press <kbd>M</kbd> again. You do not move while it is open.</span></div></li>
+</ul>
+
+<h3>9. Task panels &mdash; where the work happens</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M3 12h18"/><circle cx="9" cy="12" r="3.5" class="f"/></svg></span><div><b>Sliders and dials</b><span class="d">Where you set a real value &mdash; a temperature, a
+    depth, a mix consistency &mdash; <b>drag</b> the slider roughly into place, then use <b>&minus;</b> and <b>+</b> to
+    fine-tune exactly.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 7h.01M4 12h.01M4 17h.01M8.5 7H20M8.5 12H20M8.5 17H20"/></svg></span><div><b>Choice cards and checklists</b><span class="d">Tap a card to select, or tick items in order.
+    Some tasks require the correct <b>sequence</b>, not just the correct items.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg></span><div><b>Confirm buttons</b><span class="d">Nothing is recorded until you press the confirm button,
+    so you can change your mind freely.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5v7M9.5 8.5h5M9.5 12h4M9.5 15.5h5"/></svg></span><div><b>Closing a panel</b><span class="d">Tap the <b>X</b> or press <kbd>Esc</kbd>. Anything already
+    completed stays completed.</span></div></li>
+</ul>
+<div class="note"><span class="i"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg></span><div><b>Objectives tick straight away.</b> The moment your work is correct the objective
+ticks and you hear a chime &mdash; while you are still at the bench. You do not have to leave the building for it to
+register.</div></div>
+
+<h3>10. Conversations, finishing, and saving</h3>
+<ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><div><b>Advance a line</b><span class="d">Tap the dialogue box, or press <kbd>E</kbd> or
+    <kbd>Space</kbd>. Press <kbd>Esc</kbd> to leave early &mdash; instructions stay in the objectives panel.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="6"/><path d="M8 3l2.5 5M16 3l-2.5 5M9.8 14l1.6 1.6 3-3.2"/></svg></span><div><b>Finishing a level</b><span class="d">A congratulations screen shows units mastered, your
+    <b>Standard</b> percentage and the certificate level reached. The marker then points at the certification
+    board.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4 4h13l3 3v13H4z"/><path d="M8 4v6h8V4M8 20v-6h8v6"/></svg></span><div><b>Saving is automatic</b><span class="d">There is no save button; progress reloads when you
+    return. It is stored in that browser on that device, so a different phone or clearing browsing data starts fresh.
+    Each level saves separately.</span></div></li>
+</ul>
+
+<h3>11. If something goes wrong</h3>
+<table>
+  <tr><th>What you see</th><th>What to do</th></tr>
+  <tr><td>You do not know where to go</td><td>Follow the "!" marker, or open the <b>Site Plan</b> and find the ringed building.</td></tr>
+  <tr><td>The action button does nothing</td><td>You are not close enough &mdash; walk nearer until the "[E] ..." label appears.</td></tr>
+  <tr><td>An objective will not tick</td><td>Re-read it in the objectives panel; some need a specific value or order. Reopen the station and check each step.</td></tr>
+  <tr><td>The controls feel awkward</td><td>Switch between joystick and pad with the button beside the controls, and use fullscreen.</td></tr>
+  <tr><td>Part of the screen is cut off</td><td>Turn the phone to landscape and tap fullscreen.</td></tr>
+  <tr><td>You want to start over</td><td>Clearing your browser data for the site resets that level.</td></tr>
+</table>
+
+<h3>12. Quick reference</h3>
+<table>
+  <tr><th>Action</th><th>Touch</th><th>Keyboard</th></tr>
+  <tr><td>Walk</td><td>Drag anywhere on the left, or hold a pad arrow</td><td><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows</td></tr>
+  <tr><td>Walk to a spot</td><td>Tap the ground</td><td>Click the ground</td></tr>
+  <tr><td>Use / talk</td><td>Round <b>E</b> button</td><td><kbd>E</kbd></td></tr>
+  <tr><td>Advance dialogue</td><td>Tap the dialogue box</td><td><kbd>E</kbd> or <kbd>Space</kbd></td></tr>
+  <tr><td>Open the map</td><td><b>Site Plan</b> button</td><td><kbd>M</kbd></td></tr>
+  <tr><td>Close panel / map / dialogue</td><td><b>X</b> or tap outside</td><td><kbd>Esc</kbd></td></tr>
+  <tr><td>Show / hide objectives</td><td>Tap the panel header</td><td>&mdash;</td></tr>
+  <tr><td>Switch joystick / pad</td><td>Switch button by the controls</td><td>&mdash;</td></tr>
+  <tr><td>Fullscreen</td><td>Corner expand button</td><td>Corner expand button</td></tr>
+</table>
+
+<h2 id="learn">What you will learn</h2>
+<p class="lead">Every unit is completed by doing the job. The objectives below are exactly the ones the game checks.
+Tick them off as you go &mdash; your progress is saved in this browser.</p>
+<div class="tabs" role="tablist"><button class="tab" role="tab" data-pane="pane-l1" aria-selected="true">Level 1</button><button class="tab" role="tab" data-pane="pane-l2" aria-selected="false">Level 2</button><button class="tab" role="tab" data-pane="pane-l3" aria-selected="false">Level 3</button></div>
+<div class="toolbar">
+  <span class="srch"><span class="i"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><input id="q" type="search" placeholder="Search units and objectives..." aria-label="Search units"></span>
+  <button class="btn" id="expand">Expand all units</button>
+</div>
+<section class="pane" id="pane-l1">
+      <p style="margin:10px 0 2px">
+        <span class="ucode">HTA-ENT-02-L1-FRSH</span> &nbsp;
+        7 units &nbsp;
+        <a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l1/index.html">Play Level 1</a></p>
+      <div class="bar"><i></i></div><div class="prog"></div>
+      
+      <details class="unit" open>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 1</span>
+          <span class="utitle">Camera &amp; Shot Types</span>
+          <span class="ucode">VID/L1/U01</span></summary>
+        <div class="ubody">
+          <p>At the Camera desk: frame a clean medium shot, level a tilted horizon, and match each shot type to its storytelling job.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u1-pal" data-k="l1-u1-pal"><label for="c-l1-u1-pal">Frame a clean medium shot at eye level</label></li><li><input type="checkbox" id="c-l1-u1-con" data-k="l1-u1-con"><label for="c-l1-u1-con">Level the tilted horizon</label></li><li><input type="checkbox" id="c-l1-u1-mat" data-k="l1-u1-mat"><label for="c-l1-u1-mat">Match each shot type to its job</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The framing is clean, the horizon level and every shot type matched to its moment.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 2</span>
+          <span class="utitle">Sound Recording</span>
+          <span class="ucode">VID/L1/U02</span></summary>
+        <div class="ubody">
+          <p>At the Sound desk: flag the audio faults, set a healthy record level and mic distance, then pick the right mic for each job.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Senior Videographer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u2-aud" data-k="l1-u2-aud"><label for="c-l1-u2-aud">Flag the audio problems</label></li><li><input type="checkbox" id="c-l1-u2-set" data-k="l1-u2-set"><label for="c-l1-u2-set">Set the record level and mic distance</label></li><li><input type="checkbox" id="c-l1-u2-pair" data-k="l1-u2-pair"><label for="c-l1-u2-pair">Cast the right mic for each job</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The sound is clean — faults flagged, levels healthy, the right mic on every job.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 3</span>
+          <span class="utitle">Lighting for Video</span>
+          <span class="ucode">VID/L1/U03</span></summary>
+        <div class="ubody">
+          <p>On the lighting stage: expose the shot, flag the background so the subject separates, and match each source to the right white balance.</p>
+          <p class="who">Taught on the job by Tari George, Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u3-ps" data-k="l1-u3-ps"><label for="c-l1-u3-ps">Light the shot — expose, flag and white-balance</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A well-exposed subject, separated from the background, with true, neutral colour.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 4</span>
+          <span class="utitle">Interview / Scene Setup</span>
+          <span class="ucode">VID/L1/U04</span></summary>
+        <div class="ubody">
+          <p>At the Scene desk: compose the interview on the thirds, set headroom and eyeline, and keep every cut on the right side of the 180-degree line.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Senior Videographer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u4-com" data-k="l1-u4-com"><label for="c-l1-u4-com">Compose the frame on the thirds</label></li><li><input type="checkbox" id="c-l1-u4-anc" data-k="l1-u4-anc"><label for="c-l1-u4-anc">Set the headroom and eyeline</label></li><li><input type="checkbox" id="c-l1-u4-sort" data-k="l1-u4-sort"><label for="c-l1-u4-sort">Keep the cuts on the 180-degree line</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A balanced frame, locked headroom and eyeline, and continuity that holds across every cut.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 5</span>
+          <span class="utitle">Editing Basics</span>
+          <span class="ucode">VID/L1/U05</span></summary>
+        <div class="ubody">
+          <p>In the edit bay: build the timeline in order — import, rough cut, bind the transitions and the J/L cuts, then export the master.</p>
+          <p class="who">Taught on the job by Tari George, Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u5-kit" data-k="l1-u5-kit"><label for="c-l1-u5-kit">Build and export the timeline</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A clean cut — footage imported, transitions and J/L cuts placed, and the master exported.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 6</span>
+          <span class="utitle">Short Video Project</span>
+          <span class="ucode">VID/L1/ALL</span></summary>
+        <div class="ubody">
+          <p>In the production office: pick the client brief and complete one real production task each day — brief, shoot list, capture, edit, export.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u6-week" data-k="l1-u6-week"><label for="c-l1-u6-week">Complete the production week end to end</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A full production delivered — briefed, planned, shot, cut and exported.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 7</span>
+          <span class="utitle">Videographer Review</span>
+          <span class="ucode">VID/L1/REV</span></summary>
+        <div class="ubody">
+          <p>In the screening room: present your production to the panel, against the clock. Every choice is judged.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l1-u7-show" data-k="l1-u7-show"><label for="c-l1-u7-show">Deliver the timed videographer review</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The review is delivered — Level 1 videography competence proven.</p>
+        </div>
+      </details>
+    </section><section class="pane" id="pane-l2" hidden>
+      <p style="margin:10px 0 2px">
+        <span class="ucode">HTA-ENT-02-L2-FRSH</span> &nbsp;
+        7 units &nbsp;
+        <a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l2/index.html">Play Level 2</a></p>
+      <div class="bar"><i></i></div><div class="prog"></div>
+      
+      <details class="unit" open>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 1</span>
+          <span class="utitle">Advanced Cinematography</span>
+          <span class="ucode">VID/L2/U01</span></summary>
+        <div class="ubody">
+          <p>At the Cinematography desk: choose the lens and camera move for a briefed look, set a deliberate Dutch angle to spec, and match each move to its story job.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u1-pal" data-k="l2-u1-pal"><label for="c-l2-u1-pal">Choose the lens and move for the look</label></li><li><input type="checkbox" id="c-l2-u1-con" data-k="l2-u1-con"><label for="c-l2-u1-con">Set the deliberate Dutch angle to spec</label></li><li><input type="checkbox" id="c-l2-u1-mat" data-k="l2-u1-mat"><label for="c-l2-u1-mat">Match each camera move to its story job</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The lens and move serve the mood, the tilt is on spec, and every move is matched to its story job.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 2</span>
+          <span class="utitle">Audio Post &amp; Mixing</span>
+          <span class="ucode">VID/L2/U02</span></summary>
+        <div class="ubody">
+          <p>At the Audio Post desk: flag the mix faults, set the dialogue and music-bed levels on the meter, and bind each mix problem to the tool that fixes it.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Director of Photography.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u2-aud" data-k="l2-u2-aud"><label for="c-l2-u2-aud">Flag the mix problems</label></li><li><input type="checkbox" id="c-l2-u2-set" data-k="l2-u2-set"><label for="c-l2-u2-set">Set the dialogue and music levels</label></li><li><input type="checkbox" id="c-l2-u2-pair" data-k="l2-u2-pair"><label for="c-l2-u2-pair">Bind each problem to its tool</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The mix is clean — faults flagged, dialogue and bed balanced, the right tool on every problem.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 3</span>
+          <span class="utitle">Advanced Editing &amp; Grade</span>
+          <span class="ucode">VID/L2/U03</span></summary>
+        <div class="ubody">
+          <p>In the Grade Suite: grade the flat log shot to a balanced contrast, isolate the subject with a power window, and bind each finishing tool to its job.</p>
+          <p class="who">Taught on the job by Tari George, Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u3-ps" data-k="l2-u3-ps"><label for="c-l2-u3-ps">Grade, power-window and finish the shot</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A balanced grade, the subject holding the eye, and the finishing tools bound to their jobs.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 4</span>
+          <span class="utitle">Multi-cam &amp; Interview</span>
+          <span class="ucode">VID/L2/U04</span></summary>
+        <div class="ubody">
+          <p>At the Multi-cam desk: compose the interview on the thirds, set matched headroom and eyeline, and keep every cut on the right side of the 180-degree line.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Director of Photography.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u4-com" data-k="l2-u4-com"><label for="c-l2-u4-com">Compose the interview on the thirds</label></li><li><input type="checkbox" id="c-l2-u4-anc" data-k="l2-u4-anc"><label for="c-l2-u4-anc">Set matched headroom and eyeline</label></li><li><input type="checkbox" id="c-l2-u4-sort" data-k="l2-u4-sort"><label for="c-l2-u4-sort">Keep every cut on the 180-degree line</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A balanced A-cam frame, matched headroom and eyeline, and continuity that holds across every cut.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 5</span>
+          <span class="utitle">Story &amp; Scripting</span>
+          <span class="ucode">VID/L2/U05</span></summary>
+        <div class="ubody">
+          <p>In the Writers' Room: develop the script in order — logline, three-act structure, story beats, a shot list from the script, and a locked storyboard.</p>
+          <p class="who">Taught on the job by Tari George, Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u5-kit" data-k="l2-u5-kit"><label for="c-l2-u5-kit">Develop the script, shot list and storyboard</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A developed script — structured, beats bound, broken into a shot list and storyboarded.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 6</span>
+          <span class="utitle">Client Video Project</span>
+          <span class="ucode">VID/L2/ALL</span></summary>
+        <div class="ubody">
+          <p>In the production office: pick the client brief and run one real production task each day — brief &amp; recce, schedule, shoot, edit &amp; grade, deliver.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u6-week" data-k="l2-u6-week"><label for="c-l2-u6-week">Deliver the client project end to end</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A full client project delivered — briefed, scheduled, shot, graded and mastered to spec.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 7</span>
+          <span class="utitle">Videographer Assessment</span>
+          <span class="ucode">VID/L2/REV</span></summary>
+        <div class="ubody">
+          <p>In the screening room: present your production to the client review, against the clock. Every choice is judged.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l2-u7-show" data-k="l2-u7-show"><label for="c-l2-u7-show">Deliver the timed videographer assessment</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The assessment is delivered — Level 2 videography production competence proven.</p>
+        </div>
+      </details>
+    </section><section class="pane" id="pane-l3" hidden>
+      <p style="margin:10px 0 2px">
+        <span class="ucode">HTA-ENT-02-L3-FRSH</span> &nbsp;
+        7 units &nbsp;
+        <a href="https://games.honeytreatacademy.com/gbl/frameshotOP/l3/index.html">Play Level 3</a></p>
+      <div class="bar"><i></i></div><div class="prog"></div>
+      
+      <details class="unit" open>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 1</span>
+          <span class="utitle">Advanced Cinematography &amp; Camera Systems</span>
+          <span class="ucode">VID/L3/U01</span></summary>
+        <div class="ubody">
+          <p>At the Camera &amp; Lens desk: set focal length and camera height for the large-format hero frame, match the briefed camera roll exactly, and bind each movement rig to the job only it can do.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u1-pal" data-k="l3-u1-pal"><label for="c-l3-u1-pal">Set the focal length and camera height</label></li><li><input type="checkbox" id="c-l3-u1-con" data-k="l3-u1-con"><label for="c-l3-u1-con">Match the briefed camera roll exactly</label></li><li><input type="checkbox" id="c-l3-u1-mat" data-k="l3-u1-mat"><label for="c-l3-u1-mat">Bind each movement rig to its job</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The hero frame is lensed and placed, the roll matches the reverse, and every rig is bound to the move it was built for.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 2</span>
+          <span class="utitle">Directing &amp; Blocking</span>
+          <span class="ucode">VID/L3/U02</span></summary>
+        <div class="ubody">
+          <p>At the Blocking desk: stage the actor in the frame with looking room and eyeline, lock the blocking marks, and keep every setup on the right side of the axis of action.</p>
+          <p class="who">Taught on the job by Amaka Obi, Director.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u2-com" data-k="l3-u2-com"><label for="c-l3-u2-com">Stage the actor in the frame</label></li><li><input type="checkbox" id="c-l3-u2-anc" data-k="l3-u2-anc"><label for="c-l3-u2-anc">Mark and lock the blocking</label></li><li><input type="checkbox" id="c-l3-u2-sort" data-k="l3-u2-sort"><label for="c-l3-u2-sort">Hold the axis of action in coverage</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The scene is staged, the marks are locked, and the coverage holds the line from master to singles.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 3</span>
+          <span class="utitle">Advanced Colour Grading</span>
+          <span class="ucode">VID/L3/U03</span></summary>
+        <div class="ubody">
+          <p>In the Colour Suite: balance the log master against the scopes, isolate the frame with secondary nodes, and bind each node type to the job it does in the graph.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Post Supervisor.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u3-ps" data-k="l3-u3-ps"><label for="c-l3-u3-ps">Balance, window and build the look</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A balanced log master, secondaries holding the eye, and a node graph a client revision can survive.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 4</span>
+          <span class="utitle">Sound Design &amp; Final Mix</span>
+          <span class="ucode">VID/L3/U04</span></summary>
+        <div class="ubody">
+          <p>At the Sound &amp; Mix desk: flag the faults in the final mix, master the programme loudness and the M&amp;E bed to spec, and bind each mix problem to the tool that fixes it.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Post Supervisor.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u4-aud" data-k="l3-u4-aud"><label for="c-l3-u4-aud">Flag the faults in the final mix</label></li><li><input type="checkbox" id="c-l3-u4-set" data-k="l3-u4-set"><label for="c-l3-u4-set">Master the loudness and the bed</label></li><li><input type="checkbox" id="c-l3-u4-pair" data-k="l3-u4-pair"><label for="c-l3-u4-pair">Bind each problem to its tool</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The mix is clean and mastered — faults flagged, loudness on spec, and the right tool on every problem.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 5</span>
+          <span class="utitle">Post Workflow &amp; Delivery</span>
+          <span class="ucode">VID/L3/U05</span></summary>
+        <div class="ubody">
+          <p>In the Post &amp; Delivery suite: conform the offline, online the cut, bind each round-trip handoff to its exchange format and each deliverable to its codec, then QC and deliver.</p>
+          <p class="who">Taught on the job by Kunle Diallo, Post Supervisor.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u5-kit" data-k="l3-u5-kit"><label for="c-l3-u5-kit">Run the post pipeline through to delivery</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> Conformed, onlined, round-tripped and mastered — every deliverable built to its own written spec.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 6</span>
+          <span class="utitle">Documentary / Commercial Production</span>
+          <span class="ucode">VID/L3/ALL</span></summary>
+        <div class="ubody">
+          <p>In the production office: take the commission — an observational documentary or a commercial — and run it end to end, one production stage each day.</p>
+          <p class="who">Taught on the job by Tari George, Executive Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u6-week" data-k="l3-u6-week"><label for="c-l3-u6-week">Run the commission end to end</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> A full commission delivered — developed, planned, shot, finished and QC-passed to spec.</p>
+        </div>
+      </details>
+      <details class="unit">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg><span class="unum">Unit 7</span>
+          <span class="utitle">Master Filmmaker Assessment</span>
+          <span class="ucode">VID/L3/REV</span></summary>
+        <div class="ubody">
+          <p>In the screening room: present your master production to the commissioning review, against the clock. Every choice is judged.</p>
+          <p class="who">Taught on the job by Tari George, Executive Producer.</p>
+          <h4>What you actually do &mdash; tick these off as you go</h4>
+          <ul class="objs"><li><input type="checkbox" id="c-l3-u7-show" data-k="l3-u7-show"><label for="c-l3-u7-show">Deliver the timed master assessment</label></li></ul>
+          <p style="margin-top:10px;color:#5a4126"><b>On completion:</b> The assessment is delivered — Level 3 master filmmaking competence proven.</p>
+        </div>
+      </details>
+    </section>
+
+<h2 id="assessment">How you are assessed</h2>
+<div class="card"><ul class="rowlist">
+  <li><span class="i"><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></svg></span><div><b>By your actions, not your answers</b><span class="d">Every objective is a check against
+    what you have actually done &mdash; the right PPE on, the mix at the right consistency, the delivery sorted
+    correctly. Nothing to memorise, nothing to guess.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" class="f"/></svg></span><div><b>The Standard percentage</b><span class="d">The figure in the top bar rises as you
+    demonstrate competence. It records the quality of what you did, not just that you finished.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="14" r="6"/><path d="M8 3l2.5 5M16 3l-2.5 5M9.8 14l1.6 1.6 3-3.2"/></svg></span><div><b>Your certificate level</b><span class="d">The completion screen shows the standard you
+    reached, and the certification board in the office records it.</span></div></li>
+  <li><span class="i"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c0-4.2 3.4-6.5 7.5-6.5s7.5 2.3 7.5 6.5"/></svg></span><div><b>You can retry</b><span class="d">Nothing is lost by getting something wrong. Reopen the
+    station and do it properly &mdash; the objective ticks when the work is right.</span></div></li>
+</ul></div>
+
+<footer>
+  <p><b>FrameShot</b> &mdash; Videography &amp; Film &middot; Entertainment &amp; Creative track</p>
+  <p>Honeytreat Trade Academy &mdash; Game-Based Learning. <a href="../index.html">All guidebooks</a></p>
+</footer>
+</main></div>
+<button id="top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<script>
+// Live joystick demo — mirrors the real control: the press point becomes the
+// origin, the thumb is clamped to MAX, strength = distance / MAX.
+(function(){
+  var pad=document.getElementById('jspad'); if(!pad) return;
+  var ring=document.getElementById('jsring'), nub=document.getElementById('jsnub');
+  var oa=document.getElementById('jsang'), os=document.getElementById('jsstr'), ov=document.getElementById('jsvec'), om=document.getElementById('jsmode');
+  var guy=document.getElementById('jsguy'), stage=document.getElementById('jsstage');
+  var MAX=60, id=null, ox=0, oy=0, gx=50, gy=50, vx=0, vy=0;
+  function place(el,x,y){ el.style.left=x+'px'; el.style.top=y+'px'; }
+  function home(){
+    var r=pad.getBoundingClientRect(); ox=r.width/2; oy=r.height/2;
+    place(ring,ox,oy); place(nub,ox,oy); ring.classList.remove('on');
+    vx=vy=0; out(0,0,0);
+  }
+  function out(x,y,s){
+    ov.textContent='x '+x.toFixed(2)+'   y '+y.toFixed(2);
+    os.textContent=(s*100).toFixed(0)+'%';
+    oa.textContent=(s>0.02? (Math.atan2(y,x)*180/Math.PI).toFixed(0)+'\u00B0' : '--');
+    om.textContent = s<=0.02?'stopped' : s<0.45?'walking slowly' : s<0.85?'walking' : 'running';
+  }
+  function move(e){
+    if(id===null) return;
+    var r=pad.getBoundingClientRect(), px=e.clientX-r.left, py=e.clientY-r.top;
+    var dx=px-ox, dy=py-oy, d=Math.hypot(dx,dy), c=Math.min(d,MAX);
+    var nx=d>0?dx/d:0, ny=d>0?dy/d:0, s=c/MAX;
+    place(nub, ox+nx*c, oy+ny*c);
+    vx=nx*s; vy=ny*s; out(vx,vy,s);
+  }
+  pad.addEventListener('pointerdown',function(e){
+    id=e.pointerId; try{ pad.setPointerCapture(id); }catch(_){}
+    var r=pad.getBoundingClientRect();
+    ox=Math.max(MAX+8,Math.min(r.width-MAX-8,e.clientX-r.left));
+    oy=Math.max(MAX+8,Math.min(r.height-MAX-8,e.clientY-r.top));
+    place(ring,ox,oy); ring.classList.add('on'); move(e);
+  });
+  pad.addEventListener('pointermove',move);
+  ['pointerup','pointercancel','pointerleave'].forEach(function(t){
+    pad.addEventListener(t,function(){ if(id!==null){ try{pad.releasePointerCapture(id);}catch(_){} } id=null; home(); });
+  });
+  // the demo character moves at a speed proportional to strength, like the game
+  setInterval(function(){
+    if(!stage) return;
+    var w=stage.clientWidth, h=stage.clientHeight;
+    gx=Math.max(4,Math.min(w-4,gx+vx*3.2)); gy=Math.max(4,Math.min(h-4,gy+vy*3.2));
+    guy.style.left=gx+'px'; guy.style.top=gy+'px';
+  },16);
+  window.addEventListener('resize',home); home();
+  gx=stage.clientWidth/2; gy=stage.clientHeight/2;
+})();
+
+// D-pad demo — the buttons use CIRCULAR hit areas, so the diagonal gaps between
+// them deliberately register nothing. That is the fix for the old mis-taps.
+(function(){
+  var wrap=document.getElementById('dpwrap'); if(!wrap) return;
+  var out=document.getElementById('dpout');
+  var btns=[].slice.call(wrap.querySelectorAll('.dbtn'));
+  function hitAt(cx,cy){
+    var r=wrap.getBoundingClientRect(), x=cx-r.left, y=cy-r.top, found=null;
+    btns.forEach(function(b){
+      var br=b.getBoundingClientRect();
+      var bx=br.left-r.left+br.width/2, by=br.top-r.top+br.height/2;
+      if(Math.hypot(x-bx,y-by)<=br.width/2) found=b;
+    });
+    return found;
+  }
+  function clear(){ btns.forEach(function(b){b.classList.remove('hit');}); }
+  wrap.addEventListener('pointerdown',function(e){
+    var b=hitAt(e.clientX,e.clientY); clear();
+    if(b){ b.classList.add('hit'); out.innerHTML='Registered: <b>'+b.dataset.dir+'</b>'; }
+    else { out.innerHTML='Registered: <b>nothing</b> \u2014 you are in the gap between buttons, so no direction fires.'; }
+  });
+  ['pointerup','pointerleave','pointercancel'].forEach(function(t){
+    wrap.addEventListener(t,function(){ clear(); out.innerHTML='Press a button, then try the diagonal gap between two of them.'; });
+  });
+})();
+
+// tabs, accordions, search, progress, scrollspy, back-to-top
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  tabs.forEach(function(t){ t.addEventListener('click',function(){
+    tabs.forEach(function(o){ o.setAttribute('aria-selected', o===t?'true':'false');
+      var p=document.getElementById(o.dataset.pane); if(p) p.hidden = (o!==t); });
+  });});
+
+  var KEY='hta-gb-'+(document.body.dataset.game||'x')+'-';
+  [].forEach.call(document.querySelectorAll('.objs input'),function(cb){
+    var k=KEY+cb.dataset.k;
+    try{ if(localStorage.getItem(k)==='1') cb.checked=true; }catch(_){}
+    cb.addEventListener('change',function(){
+      try{ cb.checked?localStorage.setItem(k,'1'):localStorage.removeItem(k); }catch(_){}
+      prog();
+    });
+  });
+  function prog(){
+    [].forEach.call(document.querySelectorAll('.pane'),function(p){
+      var all=p.querySelectorAll('.objs input'), done=p.querySelectorAll('.objs input:checked');
+      var bar=p.querySelector('.bar>i'), lab=p.querySelector('.prog');
+      if(!all.length||!bar) return;
+      var pc=Math.round(done.length/all.length*100);
+      bar.style.width=pc+'%';
+      if(lab) lab.textContent=done.length+' of '+all.length+' objectives ticked  ('+pc+'%)';
+    });
+  }
+  prog();
+
+  var q=document.getElementById('q');
+  if(q) q.addEventListener('input',function(){
+    var s=q.value.trim().toLowerCase();
+    [].forEach.call(document.querySelectorAll('details.unit'),function(d){
+      var hit=!s || d.textContent.toLowerCase().indexOf(s)>=0;
+      d.style.display=hit?'':'none';
+      if(s&&hit) d.open=true;
+    });
+  });
+
+  var ex=document.getElementById('expand');
+  if(ex) ex.addEventListener('click',function(){
+    var us=[].slice.call(document.querySelectorAll('.pane:not([hidden]) details.unit'));
+    var anyClosed=us.some(function(d){return !d.open;});
+    us.forEach(function(d){ d.open=anyClosed; });
+    ex.textContent=anyClosed?'Collapse all units':'Expand all units';
+  });
+
+  var pr=document.getElementById('printme');
+  if(pr) pr.addEventListener('click',function(){ window.print(); });
+
+  var links=[].slice.call(document.querySelectorAll('nav.toc a'));
+  var heads=links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  if('IntersectionObserver' in window && heads.length){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+e.target.id); });
+      });
+    },{rootMargin:'0px 0px -72% 0px'});
+    heads.forEach(function(h){ io.observe(h); });
+  }
+
+  var top=document.getElementById('top');
+  if(top){
+    top.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+    window.addEventListener('scroll',function(){ top.classList.toggle('show', window.scrollY>600); });
+  }
+})();
+</script>
+</body></html>

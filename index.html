@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Player Guidebooks | Honeytreat Trade Academy</title>
+<style>
+*{box-sizing:border-box}
+:root{--ink:#241a10;--pap:#f6f3ec;--card:#fff;--line:#e2d8c6;--amber:#e6b95c;--deep:#241810;--mut:#5a4126}
+body{margin:0;background:var(--pap);color:var(--ink);font:16px/1.62 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#8a5a12}
+header.top{background:linear-gradient(160deg,#241810,#3a2817);color:#f4ecd6;padding:40px 0 34px;border-bottom:5px solid var(--amber)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:12px;font-weight:800;color:var(--amber);margin:0 0 8px}
+h1{font-size:39px;line-height:1.1;margin:0 0 10px;font-weight:850}
+.sub{font-size:19px;color:#d6c4a2;margin:0}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.badge{background:rgba(230,185,92,.15);border:1px solid rgba(230,185,92,.5);color:#f2cd76;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.layout{display:grid;grid-template-columns:236px 1fr;gap:36px;max-width:1080px;margin:0 auto;padding:26px 22px 90px}
+nav.toc{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;font-size:14.5px}
+nav.toc a{display:block;padding:6px 10px;border-radius:7px;color:var(--mut);text-decoration:none;border-left:3px solid transparent}
+nav.toc a:hover{background:#efe7d8}
+nav.toc a.on{background:#fff;border-left-color:var(--amber);color:var(--ink);font-weight:700}
+nav.toc .lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7a5e;font-weight:800;margin:14px 0 4px;padding-left:10px}
+h2{font-size:26px;margin:40px 0 6px;padding-top:14px;border-top:2px solid #e0d6c2;font-weight:820;scroll-margin-top:14px}
+h2:first-of-type{border-top:0;margin-top:6px}
+h3{font-size:18.5px;margin:24px 0 8px;font-weight:800}
+h4{font-size:15.5px;margin:16px 0 6px;font-weight:800;color:var(--mut)}
+p{margin:.55em 0}.lead{font-size:17.5px;color:#4a3a26}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px 21px;margin:16px 0;box-shadow:0 1px 3px rgba(60,40,10,.05)}
+.rowlist{list-style:none;padding:0;margin:12px 0}
+.rowlist li{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #ece4d6}
+.rowlist li:last-child{border-bottom:0}
+.i{flex:0 0 auto;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;background:#f2e6cd;border-radius:8px;color:#7a5a1e}
+.i svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.i svg .f{fill:currentColor;stroke:none}
+.rowlist>li>div>b{display:block;font-size:15.5px}
+.rowlist .d{color:#54452f;font-size:15px}
+.rowlist .d b,.rowlist .d kbd{display:inline}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #e6dccb;vertical-align:top}
+th{background:#f0e8d8;font-weight:800;font-size:13.5px}
+kbd{background:var(--deep);color:#f2cd76;border-radius:5px;padding:2px 8px;font:600 13px/1.5 ui-monospace,monospace;display:inline-block}
+.note{background:#fdf6e6;border:1px solid #e8d6a8;border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;display:flex;gap:12px;align-items:flex-start}
+.ucode{font:600 12.5px ui-monospace,monospace;color:#8a7a5e}
+footer{margin-top:50px;padding-top:18px;border-top:2px solid #e0d6c2;color:#6a5a42;font-size:14px}
+/* ---- interactive bits ---- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.tab{background:#efe7d8;border:1px solid var(--line);color:var(--mut);border-radius:9px;padding:8px 16px;font:800 14.5px system-ui;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--deep);border-color:var(--deep);color:#f2cd76}
+.pane[hidden]{display:none}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.srch{flex:1 1 220px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.srch input{border:0;outline:0;font:15px system-ui;flex:1;background:transparent;color:inherit}
+.btn{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font:700 14px system-ui;color:var(--mut);cursor:pointer}
+.btn:hover{border-color:#c9a25e}
+.bar{height:9px;background:#e8dfcd;border-radius:99px;overflow:hidden;margin:8px 0 2px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#e6b95c,#c98f2e);width:0;transition:width .25s}
+.prog{font-size:13.5px;color:var(--mut);font-weight:700}
+details.unit{border:1px solid var(--line);border-left:4px solid var(--amber);background:#fff;border-radius:0 12px 12px 0;margin:12px 0;overflow:hidden}
+details.unit>summary{cursor:pointer;list-style:none;padding:14px 18px;display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+details.unit>summary::-webkit-details-marker{display:none}
+details.unit>summary:hover{background:#fbf7ee}
+.unum{background:var(--deep);color:#f2cd76;font-weight:800;font-size:12.5px;border-radius:7px;padding:3px 10px}
+.utitle{font-weight:800;font-size:16.5px;flex:1 1 auto}
+.chev{width:15px;height:15px;flex:0 0 auto;transition:transform .18s;color:#a08a63}
+details.unit[open] .chev{transform:rotate(90deg)}
+.ubody{padding:0 18px 16px;border-top:1px solid #f0e8da}
+.objs{list-style:none;padding:0;margin:6px 0}
+.objs li{display:flex;gap:10px;padding:5px 0;font-size:15px;align-items:flex-start}
+.objs input{margin:3px 0 0;width:16px;height:16px;accent-color:#a8792a;flex:0 0 auto;cursor:pointer}
+.objs label{cursor:pointer}
+.objs input:checked+label{color:#7a6a52;text-decoration:line-through}
+.who{color:var(--mut);font-size:14.5px;font-style:italic}
+/* joystick + dpad demos */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+@media(max-width:860px){.demo{grid-template-columns:1fr}.layout{grid-template-columns:1fr}nav.toc{position:static;max-height:none;margin-bottom:10px}}
+.pad{position:relative;height:210px;background:#241810;border-radius:14px;overflow:hidden;touch-action:none;cursor:grab;user-select:none}
+.pad:active{cursor:grabbing}
+.pad .hint{position:absolute;inset:auto 0 10px;text-align:center;color:#b9a179;font-size:12.5px;pointer-events:none}
+.ring{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border:3px solid rgba(230,185,92,.55);border-radius:50%;background:rgba(230,185,92,.06);opacity:.55;transition:opacity .15s}
+.ring.on{opacity:1}
+.nub{position:absolute;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:#e6b95c;border:2px solid rgba(27,19,10,.55)}
+.read{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14.5px}
+.read dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:8px 0 0}
+.read dt{color:var(--mut);font-weight:700}
+.read dd{margin:0;font:600 14px ui-monospace,monospace}
+.stage{position:relative;height:96px;background:#efe7d8;border:1px solid var(--line);border-radius:10px;margin-top:10px;overflow:hidden}
+.guy{position:absolute;width:19px;height:19px;border-radius:50%;background:#8a5a12;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);left:50%;top:50%;margin:-9px 0 0 -9px}
+.dpadwrap{position:relative;height:210px;background:#241810;border-radius:14px;display:flex;align-items:center;justify-content:center;touch-action:none;user-select:none}
+.dbtn{position:absolute;width:62px;height:62px;border-radius:50%;background:rgba(42,28,16,.9);border:2.5px solid rgba(230,185,92,.85);color:#f2cd76;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.dbtn.hit{background:#e6b95c;color:#241810}
+.dbtn svg{width:20px;height:20px;fill:currentColor}
+.pressed{margin-top:10px;font:700 14px system-ui;color:var(--mut)}
+.pressed b{color:var(--ink)}
+#top{position:fixed;right:18px;bottom:18px;background:var(--deep);color:#f2cd76;border:0;border-radius:50%;width:44px;height:44px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.25)}
+#top svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#top.show{display:flex}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:15px;margin:16px 0}
+.gcard{display:block;background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;text-decoration:none;color:inherit}
+.gcard:hover{border-color:#c9a25e;box-shadow:0 3px 10px rgba(60,40,10,.09)}
+.gcard b{display:block;font-size:17px}
+.gcard span{color:var(--mut);font-size:14.5px}
+.trk{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8a7a5e;font-weight:800;margin-top:8px;display:block}
+@media print{
+  body{background:#fff}nav.toc,#top,.toolbar,.tabs,.demo{display:none !important}
+  .layout{grid-template-columns:1fr;padding-top:0}
+  details.unit>.ubody{display:block !important}details.unit{break-inside:avoid}
+  header.top{background:#241810 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pane[hidden]{display:block !important}
+  a{color:inherit;text-decoration:none}
+}
+</style></head><body>
+<header class="top"><div class="wrap">
+  <p class="eyebrow">Honeytreat Trade Academy</p>
+  <h1>Player Guidebooks</h1>
+  <p class="sub">How to play every game, and what each one teaches.</p>
+  <div class="badges"><span class="badge">23 games</span>
+    <span class="badge">69 levels</span><span class="badge">492 units</span></div>
+</div></header>
+<div class="wrap" style="padding-bottom:90px">
+  <div class="card" style="margin-top:26px">
+    <p class="lead">Every game is an explorable world, not a quiz. You play an apprentice: you walk the site, talk to
+    the people who work there, and do the real tasks of the trade. Each guidebook explains the controls in full
+    &mdash; with a <b>live joystick you can try</b> &mdash; and lists exactly what that game teaches, unit by unit.</p>
+    <div class="toolbar"><span class="srch"><span class="i"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><input id="gq" type="search" placeholder="Search games or trades..." aria-label="Search games"></span></div>
+  </div>
+  
+  <h2 data-track>Agriculture</h2>
+  <div class="grid"><a class="gcard" data-name="AquaFarm Fish Farming &amp; Aquaculture Agriculture" href="AquaFarm/index.html">
+    <b>AquaFarm</b><span>Fish Farming &amp; Aquaculture</span>
+    <span class="trk">3 levels &middot; 19 units</span></a><a class="gcard" data-name="GrowSmart Crop Production &amp; Greenhouse Agriculture" href="GrowSmart/index.html">
+    <b>GrowSmart</b><span>Crop Production &amp; Greenhouse</span>
+    <span class="trk">3 levels &middot; 23 units</span></a><a class="gcard" data-name="PoultryPro Poultry Farm Management Agriculture" href="PoultryPro/index.html">
+    <b>PoultryPro</b><span>Poultry Farm Management</span>
+    <span class="trk">3 levels &middot; 24 units</span></a><a class="gcard" data-name="AgriVenture Agribusiness &amp; Enterprise Agriculture" href="AgriVenture/index.html">
+    <b>AgriVenture</b><span>Agribusiness &amp; Enterprise</span>
+    <span class="trk">3 levels &middot; 22 units</span></a></div>
+  <h2 data-track>Construction</h2>
+  <div class="grid"><a class="gcard" data-name="BrickLayer Bricklaying &amp; Masonry Construction" href="BrickLayer/index.html">
+    <b>BrickLayer</b><span>Bricklaying &amp; Masonry</span>
+    <span class="trk">3 levels &middot; 22 units</span></a><a class="gcard" data-name="TileSet Tiling &amp; Floor Finishing Construction" href="TileSet/index.html">
+    <b>TileSet</b><span>Tiling &amp; Floor Finishing</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="DecorPro Painting &amp; Decorating Construction" href="DecorPro/index.html">
+    <b>DecorPro</b><span>Painting &amp; Decorating</span>
+    <span class="trk">3 levels &middot; 22 units</span></a><a class="gcard" data-name="PipeCraft Plumbing &amp; Pipefitting Construction" href="PipeCraft/index.html">
+    <b>PipeCraft</b><span>Plumbing &amp; Pipefitting</span>
+    <span class="trk">3 levels &middot; 22 units</span></a><a class="gcard" data-name="TimberCraft Carpentry &amp; Joinery Construction" href="TimberCraft/index.html">
+    <b>TimberCraft</b><span>Carpentry &amp; Joinery</span>
+    <span class="trk">3 levels &middot; 22 units</span></a><a class="gcard" data-name="WireUp Electrical Installation Construction" href="WireUp/index.html">
+    <b>WireUp</b><span>Electrical Installation</span>
+    <span class="trk">3 levels &middot; 22 units</span></a></div>
+  <h2 data-track>Health &amp; Safety</h2>
+  <div class="grid"><a class="gcard" data-name="SafeSite Health &amp; Safety on Site Health &amp; Safety" href="SafeSite/index.html">
+    <b>SafeSite</b><span>Health &amp; Safety on Site</span>
+    <span class="trk">3 levels &middot; 21 units</span></a></div>
+  <h2 data-track>Digital Skills</h2>
+  <div class="grid"><a class="gcard" data-name="DataQuest Data Analytics Digital Skills" href="DataQuest/index.html">
+    <b>DataQuest</b><span>Data Analytics</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="CodeCraft Software Development Digital Skills" href="CodeCraft/index.html">
+    <b>CodeCraft</b><span>Software Development</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="CyberShield Cybersecurity Digital Skills" href="CyberShield/index.html">
+    <b>CyberShield</b><span>Cybersecurity</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="VaPro Virtual Assistance &amp; Business Admin Digital Skills" href="VaPro/index.html">
+    <b>VaPro</b><span>Virtual Assistance &amp; Business Admin</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="CampaignPro Digital Marketing Digital Skills" href="CampaignPro/index.html">
+    <b>CampaignPro</b><span>Digital Marketing</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="CreativeStudio Graphic &amp; Creative Design Digital Skills" href="CreativeStudio/index.html">
+    <b>CreativeStudio</b><span>Graphic &amp; Creative Design</span>
+    <span class="trk">3 levels &middot; 21 units</span></a></div>
+  <h2 data-track>Entertainment &amp; Creative</h2>
+  <div class="grid"><a class="gcard" data-name="BeatLab Music Production Entertainment &amp; Creative" href="BeatLab/index.html">
+    <b>BeatLab</b><span>Music Production</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="LensWork Photography Entertainment &amp; Creative" href="LensWork/index.html">
+    <b>LensWork</b><span>Photography</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="FrameShot Videography &amp; Film Entertainment &amp; Creative" href="FrameShot/index.html">
+    <b>FrameShot</b><span>Videography &amp; Film</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="EventPro Event Planning &amp; Management Entertainment &amp; Creative" href="EventPro/index.html">
+    <b>EventPro</b><span>Event Planning &amp; Management</span>
+    <span class="trk">3 levels &middot; 21 units</span></a></div>
+  <h2 data-track>Soft Skills &amp; Enterprise</h2>
+  <div class="grid"><a class="gcard" data-name="VentureBuilder Startup &amp; Venture Building Soft Skills &amp; Enterprise" href="VentureBuilder/index.html">
+    <b>VentureBuilder</b><span>Startup &amp; Venture Building</span>
+    <span class="trk">3 levels &middot; 21 units</span></a><a class="gcard" data-name="WorkReady Employability &amp; Work Readiness Soft Skills &amp; Enterprise" href="WorkReady/index.html">
+    <b>WorkReady</b><span>Employability &amp; Work Readiness</span>
+    <span class="trk">3 levels &middot; 21 units</span></a></div>
+  <footer><p>Honeytreat Trade Academy &mdash; Game-Based Learning.</p></footer>
+</div>
+<button id="top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<script>
+(function(){
+  var q=document.getElementById('gq');
+  if(q) q.addEventListener('input',function(){
+    var s=q.value.trim().toLowerCase();
+    [].forEach.call(document.querySelectorAll('.gcard'),function(c){
+      c.style.display = (!s || c.dataset.name.toLowerCase().indexOf(s)>=0) ? '' : 'none';
+    });
+    [].forEach.call(document.querySelectorAll('h2[data-track]'),function(h){
+      var grid=h.nextElementSibling, any=[].some.call(grid.querySelectorAll('.gcard'),function(c){return c.style.display!=='none';});
+      h.style.display=any?'':'none'; grid.style.display=any?'':'none';
+    });
+  });
+  var top=document.getElementById('top');
+  if(top){ top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    window.addEventListener('scroll',function(){ top.classList.toggle('show', window.scrollY>500); }); }
+})();
+</script>
+</body></html>
